@@ -1,0 +1,7 @@
+node {
+    stage 'build'
+        openshiftBuild(bldCfg: 'gitbook-centos-docker')
+    stage 'deploy'
+        sh "oc rollout latest dc/gitbook-centos-docker"
+        //openshiftDeploy(deploymentConfig: 'dc/gitbook-centos-docker')
+}
